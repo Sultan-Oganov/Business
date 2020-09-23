@@ -1,0 +1,130 @@
+//МИКСИНЫ
+@import "mixins.scss";
+
+//VARIABLES=====================================================================================================
+$minwidth: 320px;
+$mw: 1170;
+$md1: $mw+12;
+$md2: 992.98;
+$md3: 767.98;
+$md4: 479.98;
+//VARIABLES=====================================================================================================
+
+//CONNECTED FONTS===============================================================================================
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
+//CONNECTED FONTS===============================================================================================
+
+//DEFAULT FONTS=================================================================================================
+$fontfamily: "Montserrat";
+.pts{font-family: "PT Serif";}
+//DEFAULT FONTS=================================================================================================
+
+//RESET=========================STYLES==========================================================================
+@import "null.scss";
+
+body{
+}
+//RESET=========================STYLES==========================================================================
+
+//ОБОЛОЧКА======================================================================================================
+.wrapper{
+	overflow: hidden;
+	width: 100%;
+	min-height: 100%;
+}
+//ОБОЛОЧКА======================================================================================================
+
+//ОСНОВНАЯ=======================СЕТКА==========================================================================
+.container{
+	max-width:$mw+px;margin: 0 auto;width: 100%;
+	@media(max-width:$md1+px){max-width: 970px;}
+	@media(max-width:$md2+px){max-width: 750px;}
+	@media(max-width:$md3+px){max-width: none;padding:0 10px;}
+}
+//ОСНОВНАЯ=======================СЕТКА==========================================================================
+
+//ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ=================================================================
+@import "ui.scss";
+@import "header.scss";
+@import "mainblock.scss";
+@import "investor.scss";
+@import "newsmedia.scss";
+@import "country.scss";
+@import "footer.scss";
+//ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ=================================================================
+
+//ОСНОВНОЙ=======================БЛОК===========================================================================
+.bluebg{
+	position: relative;
+	overflow: hidden;
+	&:after{
+			content: '';
+			position: absolute;
+			width: 35%;
+			height: 130%;
+			left: -50px;
+			top: -95px;
+			background-image: linear-gradient(198deg, #007397 0%, rgba(0, 115, 151, 0) 100%);
+			@include rotate(20deg);
+		}
+}
+
+.btn {
+	display: inline-block;
+	padding: 0 35px;
+	height: 56px;
+	line-height: 56px;
+	overflow: hidden;
+	background-color: #007397;
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	position: relative;
+	min-width: 270px;
+	text-align: center;
+	&:after{
+			content: '';
+			width: 0;
+			@include anim(0.8s,0s);
+			position: absolute;
+			height: 100%;
+			left: 50%;
+			top: 0;
+			background-color: #00526b;
+		}
+	span{
+		position: relative;
+		z-index: 2;
+	}
+	&:hover{
+		&:after{
+			left: 0;
+			width: 100%;
+		}
+	}
+	@media (max-width:$md3+px) {
+		@include flexbox();
+		justify-content: center;align-items: center;
+		line-height: 18px;
+		font-size: 14px;
+	}
+}
+
+.title{
+	color: #3c3f3d;
+	@extend .pts;
+	font-size: 32px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	line-height: 48px;
+	text-transform: uppercase;
+	@media (max-width:$md3+px){
+		font-size: 25px;
+		line-height: 33px;
+	}
+}
+
+//==============================================================================================================
